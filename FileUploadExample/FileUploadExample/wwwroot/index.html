@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Azure Storage JavaScript Client Library Sample for Blob Operations</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+</head>
+<body onload="getSasToken(); return true;">
+    <div class="container">
+        <input type="hidden" id="sas" />
+        <input type="hidden" id="account" />
+
+        <div class="mt-1">
+            <h1>Azure Storage JavaScript Client Library Sample for Blob Operations</h1>
+        </div>
+
+        <div class="mt-1">
+            <label>Select file to upload</label>
+            <input type="file" id="files" name="file" onclick="displayProcess(0); return true;" /><br />
+            <button class="btn btn-xs btn-primary" onclick="refreshContainer()">ListContainers</button>
+            <button id="upload-button" class="btn btn-xs btn-primary" onclick="uploadBlobByStream(false)">UploadBlob</button>
+            <button class="btn btn-xs btn-primary" onclick="refreshBlobList()">ListBlobs</button><br /><br />
+        </div>
+
+        <div class="mt-1">
+            <div> Uploaded Bytes: <font id="read"> </font> </div>
+            <div class="progress">
+                <div id="progress" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                    0%
+                </div>
+            </div>
+
+            <div id="result"></div>
+        </div>
+
+        <div id="containers"></div>
+    </div>
+
+    <!-- azure-storage.common.js also exports Node.js module stream, util and buffer -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="lib/azure-storage.common.min.js"></script>
+    <script src="lib/azure-storage.blob.min.js"></script>
+    <script src="src/file.js"></script>
+</body>
+</html>
